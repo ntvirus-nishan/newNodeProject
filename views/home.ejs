@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        padding: 10px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      main {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 20px;
+      }
+
+      .card {
+        background-color: #fff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/userSignup">Signup</a>
+        <a href="/addProduct">Products</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Add more cards as needed -->
+      <% allProduct.forEach((product)=>{ %>
+      <div class="card">
+        <h2><%- product.title %></h2>
+        <p>Price: <%- product.price %></p>
+        <p>Description: <%- product.description %></p>
+        <p>Published: <%- product.published %></p>
+        <p><%- product.updatedAt %></p>
+      </div>
+      <% }) %>
+    </main>
+  </body>
+</html>
