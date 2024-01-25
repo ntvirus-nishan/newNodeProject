@@ -29,6 +29,20 @@ app.get("/addProduct", (req, res) => {
   res.render("addProduct");
 });
 
+//Single Post / product
+app.get("/singlePage/:id", async (req, res) => {
+  const id = req.params.id;
+
+  //Access single row data from our table
+  const singlePost = await indexModule.products.findAll({
+    where: {
+      id: id, //second id is from table column name
+    },
+  });
+  // console.log(singlePost);
+  res.render("singlePage", { post: singlePost });
+});
+
 //handling user registration
 app.post("/userSignup", (req, res) => {
   //console.log(req.body);

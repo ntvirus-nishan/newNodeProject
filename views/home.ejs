@@ -68,8 +68,8 @@
         <h2><%- product.title %></h2>
         <p>Price: <%- product.price %></p>
         <p>Description: <%- product.description %></p>
-        <p>Published: <%- product.published %></p>
-        <p><%- product.updatedAt %></p>
+        <p>Published: <%- product.createdAt.toISOString().slice(0,10) %></p>
+        <a href="/singlePage/<%- product.id %>">Read more</a>
       </div>
       <% }) %>
     </main>
