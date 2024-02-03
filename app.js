@@ -83,6 +83,57 @@ app.post("/addProduct", async (req, res) => {
   res.redirect("/");
 });
 
+//Deleting the post
+
+app.get("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+
+  await indexModule.products.destroy({
+    where: {
+      id: id,
+    },
+  });
+  res.redirect("/");
+});
+
+//To editing post/ product
+app.get("/edit/:id", async (req, res) => {
+  const id = req.params.id;
+  //To prefill data
+  const data = await indexModule.products.findAll({
+    where: {
+      id: id,
+    },
+  });
+  //pass the data
+  res.render("editPost", { editPost: data });
+});
+
+//To save the edited data
+app.post("/editPost/:id", (req, res) => {
+  // console.log(req.body);
+  const id = req.params.id;
+  //storing data
+  const title = req.body.title;
+  const price = req.body.price;
+  const description = req.body.description;
+
+  //To update the column data where id == id
+  indexModule.products.update(
+    {
+      title: title,
+      price: price,
+      description: description,
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  );
+  res.redirect("/singlePage/" + id);
+});
+
 //
 app.listen(3000, () => {
   console.log("Server Stared in prot 3000");

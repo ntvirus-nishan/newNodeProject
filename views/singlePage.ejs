@@ -85,6 +85,8 @@
         <p>Price: <%- post[0].price %></p>
         <p>Description: <%- post[0].description %></p>
         <p>Published: <%- post[0].createdAt.toISOString().slice(0,10) %></p>
+        <button><a href="/delete/<%- post[0].id %>">Delete</a></button>
+        <button><a href="/edit/<%- post[0].id %>">Edit</a></button>
       </section>
     </div>
   </body>
